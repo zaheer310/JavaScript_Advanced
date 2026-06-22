@@ -140,4 +140,4 @@
 // let para = document.querySelector(`p`);
 // console.log(para.innerHTML);
 
-// Pending Practice Exercise :
+// // Pending Practice Exercise :

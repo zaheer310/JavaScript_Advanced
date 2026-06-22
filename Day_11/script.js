@@ -27,12 +27,21 @@
 // link.setAttribute(`href`, `https://www.google.com/`);
 // console.log(link.getAttribute(`href`));
 
-// Example 5 : Check if Attribute Exists
-let heading = document.querySelector(`h1`);
-let headId = heading.getAttribute(`id`);
-console.log(headId);
+// // Example 5 : Check if Attribute Exists
+// let heading = document.querySelector(`h1`);
+// let headId = heading.getAttribute(`id`);
+// console.log(headId);
+
+// // Manipulating Style(Inline)
+
+// // Example 1: Changing text color
+// let heading = document.querySelector(`#heading1`);
+// heading.style.color = `Black`;
+
+// // Example 2: Change background color(camalCase!)
+// let heading1 = document.querySelector(`h1`);
+// heading1.style.backgroundColor = `orange`;
 
 
-// Manipulating Style(Inline)
-// Example 1: Changing text color
-let headig
+// The classList property
+

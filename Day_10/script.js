@@ -140,4 +140,81 @@
 // let para = document.querySelector(`p`);
 // console.log(para.innerHTML);
 
-// // Pending Practice Exercise :
+
+
+// // Practice Exercise :
+
+// // Exercise 1: Selection Practice
+
+// // 1. Select the main image by its ID
+
+// // const mainImg = document.querySelector(`#mainImg`);
+// // console.log(mainImg)
+
+// // 2. Select all images with class "oldImg"
+// const oldImgs = document.querySelector(`.oldImg`)
+// console.log(oldImgs);
+
+// // 3. Select all paragraph elements
+// const allPara = document.querySelector(`p`)
+// console.log(allPara)
+
+// // 4. Select the description paragraph using querySelector
+// const descPara = document.querySelector(`#description`)
+// console.log(descPara);
+
+// // 5. Select all links inside the .box div
+// const allLinks = document.querySelectorAll(`.boxLink`)
+// console.log(allLinks)
+
+
+
+
+// Exercise 2: content Manipulation
+
+// // 1. Get the text of the main heading
+// const heading1 = document.querySelector(`#heading1`)
+// console.log(heading1.innerText);
+
+
+// // 2. Change the heading to "Exploring Our Solar System"
+// const heading1 = document.querySelector(`#heading1`)
+// console.log(heading1.innerText = `Exploring Our Solar System`);
+
+
+// // 3. Get the innerHTML of the first paragraph
+// const firstPara = document.querySelector(`p`)
+// console.log(firstPara.innerHTML)
+
+
+// // 4. Change the first h2 to include a star emoji ⭐
+
+// const heading2 = document.querySelector(`h2`);
+// console.log(heading2.innerText = `⭐`)
+
+// // 5. Log the innerText of the description paragraph
+
+// const descPara = document.querySelector(`#description`);
+// console.log(descPara.innerText)
+
+
+
+// Exercise 3: Combining Skills
+
+
+// 1. Select all images with class "oldImg"
+const oldImg = document.querySelectorAll(`.oldImg`);
+console.log(oldImg)
+// 2. Log how many images you found
+console.log(oldImg.length)
+
+// 3. Select the first paragraph and get its text
+const firstPara = document.querySelector(`p`);
+console.log(firstPara)
+
+// 4. Change the main heading using innerHTML to include <strong> tags
+
+// 5. Select all boxLinks and log their count
+const allBoxLinks = document.querySelectorAll(`.boxLink`)
+console.log(allBoxLinks)
+console.log(allBoxLinks.length)

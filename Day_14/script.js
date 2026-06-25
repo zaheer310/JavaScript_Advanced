@@ -186,6 +186,8 @@
 // withAwait();
 
 // // 4.Sequential Execution: The Power of await
+
+// //Example 1:
 // function generateRollNumber() {
 // return new Promise((resolve) => {
 // const delay = Math.random() * 2000; // Random delay up to 2 seconds
@@ -227,6 +229,31 @@
 // // Generated Roll No: 78
 // // Generated Roll No: 23
 // // --- Assignment Complete ---
+
+// // Example :Processing Exam Submissions
+
+// function calculateMarks(subjectName) {
+//   return new Promise((resolve) => {
+//     setTimeout(() => {
+//       const score = Math.random() * 100;
+//       console.log(`${subjectName} Marks are ${score}`);
+//       resolve(score);
+//     }, 1000);
+//   });
+// }
+
+// async function studentMarks() {
+//   console.log(`Student Marks are...`);
+//   const score1 = await calculateMarks(`JavaScript`);
+//   const score2 = await calculateMarks(`REACT`);
+//   const score3 = await calculateMarks(`CSS`);
+
+//   // Printing average Marks
+//   console.log(`The average Marks are `);
+//   const avg = (score1 + score2 + score3) / 3;
+//   console.log(avg);
+// }
+// studentMarks();
 
 // // 5.Refactoring Promise Chains to Async/Await
 
@@ -375,7 +402,7 @@
 
 // dataPipeline();
 
-// // Error Handling with Try/Catch
+// // 6. Error Handling with Try/Catch
 
 // // Example 1: Basic Error Handling
 // function riskyOperation() {
@@ -403,60 +430,126 @@
 
 // performOperation();
 
-// Example 2: Multiple Operations with Error Handling
-function checkInternet() {
+// // Example 2: Multiple Operations with Error Handling
+// function checkInternet() {
+//   return new Promise((resolve, reject) => {
+//     const isOnline = true;
+//     setTimeout(() => {
+//       if (isOnline) {
+//         resolve(`Internet Connected!!`);
+//       } else {
+//         reject(`No Internet Connection!!`);
+//       }
+//     }, 500);
+//   });
+// }
+
+// function downloadFile(filename) {
+//   return new Promise((resolve, reject) => {
+//     setTimeout(() => {
+//       const fileExist = true;
+//       if (fileExist) {
+//         resolve(`Download: ${filename}`);
+//       } else {
+//         reject(`File not Found : ${filename}`);
+//       }
+//     }, 1500);
+//   });
+// }
+
+// function installFile(filename) {
+//   return new Promise((resolve) => {
+//     setTimeout(() => {
+//       resolve(`Installed: ${filename}`);
+//     }, 1000);
+//   });
+// }
+
+// async function downloadAndInstall(filename) {
+//   try {
+//     // Step 1: Check internet
+//     const internetStatus = await checkInternet(filename);
+//     console.log(internetStatus);
+
+//     // Step 2:
+//     const downloadStatus = await downloadFile(filename);
+//     console.log(downloadStatus);
+
+//     // Step 3:
+//     const installStatus = await installFile(filename);
+//     console.log(installStatus);
+
+//     console.log(`All Done!!`);
+//   } catch (error) {
+//     console.log(`Process failed: ${error}`);
+//     console.log(`Please Try again!!`);
+//   }
+// }
+
+// downloadAndInstall(`ReactJs-Setup.exe`);
+
+// //Example 3: HAndling Specific Errors
+
+// function validateAge(age) {
+//   return new Promise((resolve, reject) => {
+//     setTimeout(() => {
+//       if (age < 0) {
+//         reject({ type: `INVALID_AGE`, message: `Age cannot be Negative` });
+//       } else if (age < 18) {
+//         reject({ type: `UNDER_AGE`, message: `Must be 18 or Older!` });
+//       } else {
+//         resolve(`Age Verified!!!`);
+//       }
+//     }, 1000);
+//   });
+// }
+
+// async function registerStudent(age, studentName) {
+//   try {
+//     const msg = await validateAge(age);
+//     console.log(`${msg} , ${studentName} is Eligible to get registered!!!`);
+//   } catch (error) {
+//     if (error.type === "INVALID_AGE") {
+//       console.log("Error:", error.message);
+//       console.log("Please enter a valid age");
+//     } else if (error.type === "UNDER_AGE") {
+//       console.log("Error:", error.message);
+//       console.log("Parent consent required");
+//     } else {
+//       console.log("Unknown error:", error);
+//     }
+//   }
+// }
+
+// registerStudent(12, `Zaheer`);
+
+// Example 4: Try/Catch with finally
+function processPay(amount) {
   return new Promise((resolve, reject) => {
-    const isOnline = true;
     setTimeout(() => {
-      if (isOnline) {
-        resolve(`Internet Connected!!`);
+      const success = amount <= 1000;
+      if (success) {
+        resolve(`Payment of $${amount} Processed!!`);
       } else {
-        reject(`No Internet Connection!!`);
+        reject(`Payment of ${amount} Failed : Insufficient Balance!!`);
       }
-    }, 500);
+    }, 2000);
   });
 }
 
-function downloadFile(filename) {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      const fileExist = true;
-      if (fileExist) {
-        resolve(`Download: ${filename}`);
-      } else {
-        reject(`File not Found : ${filename}`);
-      }
-    }, 1500);
-  });
-}
+async function makePayment(amount) {
+  console.log(`Processing Payment!!!`);
 
-function installFile(filename) {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      resolve(`Installed: ${filename}`);
-    }, 1000);
-  });
-}
-
-async function downloadAndInstall(filename) {
   try {
-    // Step 1: Check internet
-    const internetStatus = await checkInternet(filename);
-    console.log(internetStatus);
-
-    // Step 2:
-    const downloadStatus = await downloadFile(filename);
-    console.log(downloadStatus);
-
-    // Step 3:
-    const installStatus = await installFile(filename);
-    console.log(installStatus);
-
-    console.log(`All Done!!`);
+    const msg = await processPay(amount);
+    console.log(msg);
   } catch (error) {
-    console.log(`Process failed: ${error}`);
-    console.log(`Please Try again!!`);
+    console.log(error);
+  } finally {
+    // This ALWAYS RUNS, irrespective of success or failure
+    console.log(`Transaction Completed!!!`);
+    console.log(`Receipt sent to Email`);
   }
 }
 
-downloadAndInstall(`ReactJs-Setup.exe`);
+makePayment(1000);

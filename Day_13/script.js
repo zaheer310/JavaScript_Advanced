@@ -226,49 +226,50 @@
 
 // // Example 1: Proccessing Data Step by Step
 
-// function step1() {
-//   return new Promise((resolve) => {
-//     setTimeout(() => {
-//       console.log(`Step1 Completed!!`);
-//       resolve(`Data from step1`);
-//     }, 1000);
-//   });
-// }
+function step1() {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      console.log(`Step1 Completed!!`);
+      resolve(`Data from step1`);
+    }, 1000);
+  });
+}
 
-// function step2(PreviousData) {
-//   return new Promise((resolve) => {
-//     setTimeout(() => {
-//       console.log(`Received ${PreviousData}`);
-//       console.log(`Step2 Completed!!`);
-//       resolve(`Data from step2`);
-//     }, 1000);
-//   });
-// }
+function step2(PreviousData) {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      console.log(`Received ${PreviousData}`);
+      console.log(`Step2 Completed!!`);
+      resolve(`Data from step2`);
+    }, 1000);
+  });
+}
 
-// function step3(PreviousData) {
-//   return new Promise((resolve) => {
-//     setTimeout(() => {
-//       console.log(`Received ${PreviousData}`);
-//       console.log(`Step3 Completed!!`);
-//       resolve();
+function step3(PreviousData) {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      console.log(`Received ${PreviousData}`);
+      console.log(`Step3 Completed!!`);
+      resolve();
+    }, 1000);
+  });
+}
 
-//     }, 1000);
-//   });
-// }
+// Clean promise Chain
 
-// // Clean promise Chain
-
-// step1()
-//   .then((msg) => {
-//     return step2(msg);
-//   })
-//   .then((msg) => {
-//     return step3(msg);
-//     console.log(`All Done !!!`);// Doubt , why it is not getting printed
-//   })
-//   .catch((error) => {
-//     console.log(`Error: ${error}`);
-//   });
+step1()
+  .then((msg) => {
+    return step2(msg);
+  })
+  .then((msg) => {
+    return step3(msg);
+    
+  }).then(()=>{
+    console.log(`All Done !!!`); // Doubt , why it is not getting printed
+  })
+  .catch((error) => {
+    console.log(`Error: ${error}`);
+  });
 
 // //   Example 2: Changing Background Color
 
@@ -351,55 +352,55 @@
 //     console.log("❌ Registration failed:", error);
 //   });
 
-//   Example 4:
-function getUser(UserID) {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      resolve({ id: UserID, name: `Zaheer` });
-    }, 1000);
-  });
-}
+// //   Example 4:
+// function getUser(UserID) {
+//   return new Promise((resolve) => {
+//     setTimeout(() => {
+//       resolve({ id: UserID, name: `Zaheer` });
+//     }, 1000);
+//   });
+// }
 
-function getUserOrders(user) {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      resolve({
-        user: user,
-        orders: [`Order1`, `Order2`, `Order3`],
-      });
-    }, 1000);
-  });
-}
+// function getUserOrders(user) {
+//   return new Promise((resolve) => {
+//     setTimeout(() => {
+//       resolve({
+//         user: user,
+//         orders: [`Order1`, `Order2`, `Order3`],
+//       });
+//     }, 1000);
+//   });
+// }
 
-function calculateTotal(data) {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      resolve({
-        user: data.user,
-        orders: data.orders,
-        total: 2500,
-      });
-    }, 1000);
-  });
-}
+// function calculateTotal(data) {
+//   return new Promise((resolve) => {
+//     setTimeout(() => {
+//       resolve({
+//         user: data.user,
+//         orders: data.orders,
+//         total: 2500,
+//       });
+//     }, 1000);
+//   });
+// }
 
-getUser(101)
-  .then((user) => {
-    console.log(`Got User :${user.name}`);
-    return getUserOrders(user);
-  })
-  .then((data) => {
-    console.log(`Got Orders : ${data.orders}`);
-    return calculateTotal(data);
-  })
-  .then((finalData) => {
-    console.log(`Final Details ...`);
-    console.log(`user: ${finalData.user.name}`);
-    console.log(
-      `Total Oders : ${finalData.orders} and no. of orders are ${finalData.orders.length}`,
-    );
-    console.log(`Total Amount : SAR ${finalData.total}`);
-  })
-  .catch((error) => {
-    console.log(`Error: ${error}`);
-  });
+// getUser(101)
+//   .then((user) => {
+//     console.log(`Got User :${user.name}`);
+//     return getUserOrders(user);
+//   })
+//   .then((data) => {
+//     console.log(`Got Orders : ${data.orders}`);
+//     return calculateTotal(data);
+//   })
+//   .then((finalData) => {
+//     console.log(`Final Details ...`);
+//     console.log(`user: ${finalData.user.name}`);
+//     console.log(
+//       `Total Oders : ${finalData.orders} and no. of orders are ${finalData.orders.length}`,
+//     );
+//     console.log(`Total Amount : SAR ${finalData.total}`);
+//   })
+//   .catch((error) => {
+//     console.log(`Error: ${error}`);
+//   });

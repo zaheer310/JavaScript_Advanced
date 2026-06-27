@@ -153,6 +153,102 @@
 
 // Part 7: Working with textContent
 
-// Q1. Get Text Content of Intro
-const paraContent = document.querySelector(`#intro`);
-console.log(paraContent.textContent)
+// // Q1. Get Text Content of Intro
+// const paraContent = document.querySelector(`#intro`);
+// console.log(paraContent.textContent)
+
+// //Q2. Get All Text from Container
+// const container = document.querySelector(`.container`);
+// console.log(container.textContent);
+
+
+// // Q3.Get All Text from Container
+// const h2 = document.querySelector(`h2`);
+// console.log(h2.textContent = `Updated Section`);
+
+// // Q5. Compare Properties of TextContent & innetText
+// const introPara = document.querySelector(`p`);
+// console.log(introPara.textContent);
+// console.log(introPara.innerText)
+
+
+
+// //  Part 8: Working with innerHTML
+
+// // Q1. Get HTML Structure
+// const introPara = document.querySelector(`#intro`)
+// console.log(introPara)
+
+// // Q2. Add HTML to Heading
+// const heading1 = document.querySelector(`h1`)
+// console.log(heading1.innerHTML = `JavaScript DOM`)
+
+// // Q3. Change Paragraph with HTML
+// const firstPara = document.querySelector(`p`);
+// firstPara.innerHTML = `I am learning <strong>Dom Manipulation</strong>!`
+
+
+// // Q4. Add Link to Footer
+// const footer = document.querySelector(`footer`);
+// footer.innerHTML = '<p>Visit <a href="#">my website</a></p>'
+
+// // Q5. Get Skills List HTML
+// const skillList = document.querySelector(`#skillsList`);
+// console.log(skillList)
+
+
+
+
+
+// // Part 9: Combined Practice 
+
+// // Q1. Select and Modify
+// const mHeading = document.querySelector(`h1`);
+// mHeading.innerHTML = `DOM Mastery Assignment`
+
+// // Q2. Count and Display
+// const allPara = document.querySelectorAll(`p`)
+// for (const para of allPara) {
+//     para.innerHTML = `Total paragraphs: ${allPara.length}`
+// }
+
+// // Q3. Change Multiple Elements
+// const skills = document.querySelectorAll(`.skill`);
+// for (const skill of skills) {
+//     skill.innerHTML = `${skill.innerText} Learning.`
+// }
+
+// // Q4. Get HTML Content
+// const gallery = document.querySelector(`#gallery`);
+// console.log(gallery.innerHTML) 
+
+
+// // Q5. Complex Selection
+// const firstFooter = document.querySelector(`a`);
+// firstFooter.innerText = "contact@myemail.com";
+
+
+//// Part 10: Challenge Problems
+
+// // Q1. Update All Descriptions
+// const allPara = document.querySelectorAll(`p`);
+
+// for (const para of allPara) {
+//     console.log(para.innerText = `${para.innerText} Updated!!`);
+// }
+
+// Q2. Create a Skills Counter
+const skillsList = document.querySelectorAll(`.skill`);
+let count =0;
+for (const skill of skillsList) {
+    count++;
+}
+console.log(count);
+
+// Q3. Modify Footer Links
+
+
+// Q4. HTML Structure Exploration
+
+
+// Q5. Selective Update

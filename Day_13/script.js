@@ -226,50 +226,50 @@
 
 // // Example 1: Proccessing Data Step by Step
 
-function step1() {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      console.log(`Step1 Completed!!`);
-      resolve(`Data from step1`);
-    }, 1000);
-  });
-}
+// function step1() {
+//   return new Promise((resolve) => {
+//     setTimeout(() => {
+//       console.log(`Step1 Completed!!`);
+//       resolve(`Data from step1`);
+//     }, 1000);
+//   });
+// }
 
-function step2(PreviousData) {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      console.log(`Received ${PreviousData}`);
-      console.log(`Step2 Completed!!`);
-      resolve(`Data from step2`);
-    }, 1000);
-  });
-}
+// function step2(PreviousData) {
+//   return new Promise((resolve) => {
+//     setTimeout(() => {
+//       console.log(`Received ${PreviousData}`);
+//       console.log(`Step2 Completed!!`);
+//       resolve(`Data from step2`);
+//     }, 1000);
+//   });
+// }
 
-function step3(PreviousData) {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      console.log(`Received ${PreviousData}`);
-      console.log(`Step3 Completed!!`);
-      resolve();
-    }, 1000);
-  });
-}
+// function step3(PreviousData) {
+//   return new Promise((resolve) => {
+//     setTimeout(() => {
+//       console.log(`Received ${PreviousData}`);
+//       console.log(`Step3 Completed!!`);
+//       resolve();
+//     }, 1000);
+//   });
+// }
 
-// Clean promise Chain
+// // Clean promise Chain
 
-step1()
-  .then((msg) => {
-    return step2(msg);
-  })
-  .then((msg) => {
-    return step3(msg);
+// step1()
+//   .then((msg) => {
+//     return step2(msg);
+//   })
+//   .then((msg) => {
+//     return step3(msg);
     
-  }).then(()=>{
-    console.log(`All Done !!!`); // Doubt , why it is not getting printed
-  })
-  .catch((error) => {
-    console.log(`Error: ${error}`);
-  });
+//   }).then(()=>{
+//     console.log(`All Done !!!`); // Doubt , why it is not getting printed
+//   })
+//   .catch((error) => {
+//     console.log(`Error: ${error}`);
+//   });
 
 // //   Example 2: Changing Background Color
 
@@ -339,6 +339,8 @@ step1()
 //   });
 // }
 
+
+
 // // Promise Chainning
 // registerUser(`Shaker_Bhai, Sahil_Bhai, Anas_Bhai`)
 //   .then(sendVerificationEmail)
@@ -351,6 +353,8 @@ step1()
 //   .catch((error) => {
 //     console.log("❌ Registration failed:", error);
 //   });
+
+
 
 // //   Example 4:
 // function getUser(UserID) {
@@ -404,3 +408,96 @@ step1()
 //   .catch((error) => {
 //     console.log(`Error: ${error}`);
 //   });
+
+
+
+// // Practice Exercises
+
+// // Exercise 1: Simple Promise
+
+// function checkResult(marks){
+//   return new Promise((resolve, reject) => {
+//     setTimeout(()=>{
+//       if(marks >= 40){
+
+//         resolve(`Passed!congratulations!!`)
+//       }else{
+//         reject(`Failed!, Better Luck next Time.`)
+//       }
+//     },1000);
+//   });
+// };
+
+// checkResult(90)
+// .then((msg)=>{console.log(msg)})
+// .catch((error)=>{console.log(error)});
+
+
+// // Promise Chaining 
+// function login(username){
+//   return new Promise((resolve, reject) => {
+//     setTimeout(()=>{
+//       console.log(`Logged in as ${username}`)
+//       resolve(username)
+//     },1000)
+//   });
+// };
+
+// function fetchProfile(username){
+//   return new Promise((resolve, reject) => {
+//     setTimeout(()=>{
+//       resolve({userName : username , bio : `Web Developer`})
+//     },1000)
+//   });
+// };
+
+
+// function fetchPost(profile){
+//   return new Promise((resolve, reject) => {
+//     setTimeout(()=>{
+//       resolve({
+//         profile: profile,
+//         posts: [`post1`,`post2`, `post3`],
+//       })
+//     },1000)
+//   })
+// }
+
+
+// login(`zaheer`)
+// .then((username)=>{
+//   fetchProfile(username).then((profile)=>{
+//     fetchPost(profile).then((userProfile)=>{
+//       console.log(`User Successfully Registered!`);
+//       console.log(userProfile.posts)
+//     })
+//   })
+// })
+
+
+
+// // Exercise 3: Error Handling
+
+// function randomOperation(){
+//   return new Promise((resolve, reject) => {
+//     setTimeout(()=>{
+//       let random = Math.random();
+//       if(random > 0.5){
+//         resolve(`Success! Random value: ${random}`)
+//       }else{
+//         reject(`Failed! Random value: ${random}`)
+//       }
+//     },1000);
+//   });
+// };
+
+// randomOperation()
+// .then((msg)=>{
+//   console.log(msg)
+// })
+// .catch((error)=>{
+//   console.log(error);
+// })
+
+// .then(msg => console.log(msg))
+// .catch(error => console.log(error));

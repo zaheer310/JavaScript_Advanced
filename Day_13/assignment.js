@@ -317,39 +317,84 @@
 
 
 
-// Exercise 3.2: Food Delivery Chain
-function placeOrder(item) {
+// // Exercise 3.2: Food Delivery Chain
+// function placeOrder(item) {
+// return new Promise((resolve) => {
+// setTimeout(() => {
+// console.log("Order placed:", item);
+// resolve({ item: item, orderId: "ORD123" });
+// }, 1000);
+// });
+// }
+// function prepareFood(order) {
+// return new Promise((resolve) => {
+// setTimeout(() => {
+// console.log("Preparing:", order.item);
+// resolve({ ...order, status: "Prepared" });
+// }, 2000);
+// });
+// }
+// function deliverFood(order) {
+// return new Promise((resolve) => {
+// setTimeout(() => {
+// console.log("Delivering:", order.item);
+// resolve({ ...order, delivered: true });
+// }, 1500);
+// });
+// }
+// // Your task: Chain the process for ordering "Pizza"
+// // Print "Order delivered successfully!" at the end
+
+// placeOrder(`Pizza`)
+// .then((status)=>{
+//     prepareFood(status).then((order)=>{
+//         deliverFood(order).then((reciept)=>{
+//             console.log(`Order delivered successfully!`)
+//         })
+//     })
+// })
+
+
+
+// Exercise 3.3: Bank Transaction
+
+function verifyAccount(accountNumber) {
+return new Promise((resolve, reject) => {
+setTimeout(() => {
+if (accountNumber.length === 10) {
+resolve({ accountNumber: accountNumber, verified: true });
+} else {
+reject("Invalid account number");
+}
+}, 1000);
+})
+}
+
+
+function checkBalance(account) {
 return new Promise((resolve) => {
 setTimeout(() => {
-console.log("Order placed:", item);
-resolve({ item: item, orderId: "ORD123" });
+resolve({ ...account, balance: 5000 });
 }, 1000);
 });
 }
-function prepareFood(order) {
-return new Promise((resolve) => {
+function withdrawMoney(account, amount) {
+return new Promise((resolve, reject) => {
 setTimeout(() => {
-console.log("Preparing:", order.item);
-resolve({ ...order, status: "Prepared" });
-}, 2000);
+if (account.balance >= amount) {
+resolve({
+...account, 
+balance: account.balance - amount,
+withdrawn: amount
+});
+} else {
+reject("Insufficient balance");
+}
+}, 1000);
 });
 }
-function deliverFood(order) {
-return new Promise((resolve) => {
-setTimeout(() => {
-console.log("Delivering:", order.item);
-resolve({ ...order, delivered: true });
-}, 1500);
-});
-}
-// Your task: Chain the process for ordering "Pizza"
-// Print "Order delivered successfully!" at the end
-
-placeOrder(`Pizza`)
-.then((status)=>{
-    prepareFood(status).then((order)=>{
-        deliverFood(order).then((reciept)=>{
-            console.log(`Order delivered successfully!`)
-        })
-    })
-})
+// Your task:
+// 1. Verify account "1234567890"
+// 2. Check balance
+// 3. Withdraw 2000
+// 4. Print final balance
